@@ -5,8 +5,10 @@ import AddTodo from './AddTodo'
 import { v4 as uuidv4 } from 'uuid'
 
 import '../App.css'
+const LOCAL_STORAGE_KEY = 'todos.todos'
 
 export class TodoApp extends Component {
+  
   state = {
     todos: [
       {
@@ -27,6 +29,11 @@ export class TodoApp extends Component {
     ]
   }
 
+  componentDidMount() {
+    const todoJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
+    if (todoJSON != null) this.setState({todos: JSON.parse(todoJSON)})
+  }
+
   handleChange = (id) => {
     this.setState({
       todos: this.state.todos.map(todo => {
@@ -44,6 +51,7 @@ export class TodoApp extends Component {
         })
       ]
     })
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(this.state.todos))
   }
 
   addTodo = title => {
@@ -52,7 +60,8 @@ export class TodoApp extends Component {
       title: title,
       completed: false
     }
-    this.setState({todos: [...this.state.todos, newTodo]})
+    this.setState({ todos: [...this.state.todos, newTodo] })
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(this.state.todos))
   }
 
   render() {
