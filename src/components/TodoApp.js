@@ -15,16 +15,6 @@ export class TodoApp extends Component {
         id: uuidv4(),
         title: "Setup Development Enviroment",
         completed: true
-      },
-      {
-        id: uuidv4(),
-        title: "Develope website and add content",
-        completed: false
-      },
-      {
-        id: uuidv4(),
-        title: "Deploy to live server",
-        completed: false
       }
     ]
   }

@@ -30,8 +30,8 @@ body {
  .btn-style {
    background: #d35e0f;
    color: #fff;
-   border: 1px solid #d35e0f;
-   border-radius: 50%;
+   border: 5px solid #d35e0f;
+   border-radius: 40%;
    cursor: pointer;
    float: right;
    outline: none;
